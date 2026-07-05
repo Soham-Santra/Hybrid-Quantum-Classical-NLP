@@ -1,0 +1,122 @@
+[2026-06-11 16:17:19] INFO     root                           | Log file: results/logs\run_20260611_161719.log
+[2026-06-11 16:17:21] INFO     root                           | Random seed set to 42
+[2026-06-11 16:17:21] INFO     run                            | Hybrid Quantum-Classical NLP Framework
+[2026-06-11 16:17:21] INFO     run                            | Project root: D:\Programing Files\JU
+[2026-06-11 16:17:21] INFO     run                            | ======================================================================
+[2026-06-11 16:17:21] INFO     run                            |   EXPERIMENT : classical
+[2026-06-11 16:17:21] INFO     run                            |   LANGUAGES  : ['hindi']
+[2026-06-11 16:17:21] INFO     run                            |   EMBEDDING  : tfidf
+[2026-06-11 16:17:21] INFO     run                            |   MAX SAMPLES: 500
+[2026-06-11 16:17:21] INFO     run                            | ======================================================================
+[2026-06-11 16:17:26] INFO     experiments.runner             | 
+============================================================
+[2026-06-11 16:17:26] INFO     experiments.runner             |   Classical Experiment — HINDI
+[2026-06-11 16:17:26] INFO     experiments.runner             | ============================================================
+[2026-06-11 16:17:26] INFO     data.loader                    | Loading local dataset: D:\Programing Files\JU\data\raw\EmoInHindi\LREC_EmoInHindi.csv
+[2026-06-11 16:17:26] INFO     data.loader                    |   Loaded 44247 rows, columns=['dialogueId', 'utterance_no', 'authorRole', 'utterance', 'emotions', 'emoIntensity']
+[2026-06-11 16:17:26] WARNING  data.splitter                  | Second stratified split failed (likely due to sparse classes) — falling back to random split.
+[2026-06-11 16:17:26] INFO     data.splitter                  | Split sizes — train: 400, val: 50, test: 50
+[2026-06-11 16:17:26] INFO     data.loader                    | 
+EmotionDataset(name=emo_in_hindi, lang=hindi, labels=17)
+  train: 400 samples
+  val: 50 samples
+  test: 50 samples
+[2026-06-11 16:17:26] INFO     data.splitter                  |   train:    400 samples, 14 classes
+[2026-06-11 16:17:26] INFO     data.splitter                  |                  anticipation: 99
+[2026-06-11 16:17:26] INFO     data.splitter                  |                     confident: 74
+[2026-06-11 16:17:26] INFO     data.splitter                  |                       neutral: 77
+[2026-06-11 16:17:26] INFO     data.splitter                  |                       hopeful: 26
+[2026-06-11 16:17:26] INFO     data.splitter                  |                         anger: 2
+[2026-06-11 16:17:26] INFO     data.splitter                  |                           sad: 27
+[2026-06-11 16:17:26] INFO     data.splitter                  |                           joy: 47
+[2026-06-11 16:17:26] INFO     data.splitter                  |                          fear: 15
+[2026-06-11 16:17:26] INFO     data.splitter                  |                     disgusted: 6
+[2026-06-11 16:17:26] INFO     data.splitter                  |                       annoyed: 13
+[2026-06-11 16:17:26] INFO     data.splitter                  |                      grateful: 4
+[2026-06-11 16:17:26] INFO     data.splitter                  |                     impressed: 2
+[2026-06-11 16:17:26] INFO     data.splitter                  |                  apprehensive: 4
+[2026-06-11 16:17:26] INFO     data.splitter                  |                     surprised: 4
+[2026-06-11 16:17:26] INFO     data.splitter                  |     val:     50 samples, 9 classes
+[2026-06-11 16:17:26] INFO     data.splitter                  |                  anticipation: 12
+[2026-06-11 16:17:26] INFO     data.splitter                  |                     confident: 12
+[2026-06-11 16:17:26] INFO     data.splitter                  |                       neutral: 5
+[2026-06-11 16:17:26] INFO     data.splitter                  |                       hopeful: 5
+[2026-06-11 16:17:26] INFO     data.splitter                  |                           sad: 3
+[2026-06-11 16:17:26] INFO     data.splitter                  |                           joy: 6
+[2026-06-11 16:17:26] INFO     data.splitter                  |                          fear: 2
+[2026-06-11 16:17:26] INFO     data.splitter                  |                     disgusted: 2
+[2026-06-11 16:17:26] INFO     data.splitter                  |                       annoyed: 3
+[2026-06-11 16:17:26] INFO     data.splitter                  |    test:     50 samples, 11 classes
+[2026-06-11 16:17:26] INFO     data.splitter                  |                  anticipation: 13
+[2026-06-11 16:17:26] INFO     data.splitter                  |                     confident: 7
+[2026-06-11 16:17:26] INFO     data.splitter                  |                       neutral: 14
+[2026-06-11 16:17:26] INFO     data.splitter                  |                       hopeful: 1
+[2026-06-11 16:17:26] INFO     data.splitter                  |                         anger: 1
+[2026-06-11 16:17:26] INFO     data.splitter                  |                           sad: 4
+[2026-06-11 16:17:26] INFO     data.splitter                  |                           joy: 5
+[2026-06-11 16:17:26] INFO     data.splitter                  |                          fear: 2
+[2026-06-11 16:17:26] INFO     data.splitter                  |                      grateful: 1
+[2026-06-11 16:17:26] INFO     data.splitter                  |                  apprehensive: 1
+[2026-06-11 16:17:26] INFO     data.splitter                  |                     surprised: 1
+[2026-06-11 16:17:26] INFO     preprocessing.pipeline         | Preprocessing dataset 'emo_in_hindi' (language=hindi) …
+[2026-06-11 16:17:26] INFO     preprocessing.pipeline         |   train: 400 samples cleaned.
+[2026-06-11 16:17:26] INFO     preprocessing.pipeline         |   val: 50 samples cleaned.
+[2026-06-11 16:17:26] INFO     preprocessing.pipeline         |   test: 50 samples cleaned.
+[2026-06-11 16:17:26] INFO     preprocessing.pipeline         | Preprocessing complete for 'emo_in_hindi'.
+[2026-06-11 16:17:26] INFO     embeddings.factory             | Creating embedder — method=tfidf, language=hindi
+[2026-06-11 16:17:26] INFO     embeddings.tfidf               | TfidfEmbedder initialised — max_features=5000, ngram_range=(1, 2), sublinear_tf=True
+[2026-06-11 16:17:26] INFO     embeddings.factory             | Embedding dataset with TF-IDF (fit on train) …
+[2026-06-11 16:17:26] INFO     embeddings.tfidf               | Fit-transforming TF-IDF on 400 documents …
+[2026-06-11 16:17:26] INFO     embeddings.tfidf               | TF-IDF fit_transform complete — vocabulary size: 1011, output shape: (400, 1011)
+[2026-06-11 16:17:26] INFO     embeddings.factory             |   train embeddings shape: (400, 1011)
+[2026-06-11 16:17:26] INFO     embeddings.factory             |   val embeddings shape: (50, 1011)
+[2026-06-11 16:17:26] INFO     embeddings.factory             |   test embeddings shape: (50, 1011)
+[2026-06-11 16:17:26] INFO     experiments.runner             | 
+--- Training logistic_regression ---
+[2026-06-11 16:17:26] INFO     models.classical.logistic_regression | LogisticRegression initialised (C=1.0000, solver=lbfgs, max_iter=1000)
+[2026-06-11 16:17:26] INFO     models.classical.logistic_regression | Training LogisticRegression on 400 samples (features=1011)
+[2026-06-11 16:17:26] INFO     models.classical.logistic_regression | Training complete — train_acc=0.8450  val_acc=0.7400  time=0.12s
+[2026-06-11 16:17:26] INFO     models.classical.base          | Evaluation — Acc=0.7200  P=0.7038  R=0.7200  F1=0.6833
+[2026-06-11 16:17:26] INFO     experiments.runner             |   logistic_regression: F1=0.6833
+[2026-06-11 16:17:26] INFO     experiments.runner             | 
+--- Training svm ---
+[2026-06-11 16:17:26] INFO     models.classical.svm           | LinearSVC initialised (C=1.0000, max_iter=5000)
+[2026-06-11 16:17:26] INFO     models.classical.svm           | Training LinearSVC on 400 samples (features=1011)
+[2026-06-11 16:17:26] INFO     models.classical.svm           | Training complete — train_acc=0.9375  val_acc=0.8800  time=0.01s
+[2026-06-11 16:17:26] INFO     models.classical.base          | Evaluation — Acc=0.7800  P=0.7756  R=0.7800  F1=0.7585
+[2026-06-11 16:17:26] INFO     experiments.runner             |   svm: F1=0.7585
+[2026-06-11 16:17:26] INFO     experiments.runner             | 
+--- Training cnn ---
+[2026-06-11 16:17:26] INFO     models.classical.cnn           | CNNClassifier initialised (filters=128, kernels=[3, 4, 5], dropout=0.50, epochs=20, bs=64, lr=0.0010)
+[2026-06-11 16:17:26] INFO     models.classical.cnn           | Starting CNN training — 20 epochs, 400 train samples, input_dim=1011
+[2026-06-11 16:17:26] ERROR    experiments.runner             |   cnn failed: 'tuple' object has no attribute 'squeeze'
+[2026-06-11 16:17:26] INFO     experiments.runner             | 
+--- Training bilstm ---
+[2026-06-11 16:17:26] INFO     models.classical.bilstm        | BiLSTMClassifier initialised (hidden=128, layers=2, dropout=0.30, epochs=20, bs=64, lr=0.0010)
+[2026-06-11 16:17:26] INFO     models.classical.bilstm        | Starting BiLSTM training — 20 epochs, 400 train samples, input_dim=1011
+[2026-06-11 16:17:26] INFO     models.classical.bilstm        | Epoch 1/20 — train_loss=2.8234  train_acc=0.0925  val_loss=2.7828  val_acc=0.1000
+[2026-06-11 16:17:26] INFO     models.classical.bilstm        | Epoch 2/20 — train_loss=2.7461  train_acc=0.2075  val_loss=2.6734  val_acc=0.1000
+[2026-06-11 16:17:27] INFO     models.classical.bilstm        | Epoch 3/20 — train_loss=2.5775  train_acc=0.2300  val_loss=2.3809  val_acc=0.2400
+[2026-06-11 16:17:27] INFO     models.classical.bilstm        | Epoch 4/20 — train_loss=2.2129  train_acc=0.2550  val_loss=2.0381  val_acc=0.2400
+[2026-06-11 16:17:27] INFO     models.classical.bilstm        | Epoch 5/20 — train_loss=1.9793  train_acc=0.2475  val_loss=1.9548  val_acc=0.2400
+[2026-06-11 16:17:27] INFO     models.classical.bilstm        | Epoch 6/20 — train_loss=1.8970  train_acc=0.2600  val_loss=1.8479  val_acc=0.2400
+[2026-06-11 16:17:27] INFO     models.classical.bilstm        | Epoch 7/20 — train_loss=1.8040  train_acc=0.2625  val_loss=1.8045  val_acc=0.2800
+[2026-06-11 16:17:27] INFO     models.classical.bilstm        | Epoch 8/20 — train_loss=1.7437  train_acc=0.2625  val_loss=1.7442  val_acc=0.2400
+[2026-06-11 16:17:27] INFO     models.classical.bilstm        | Epoch 9/20 — train_loss=1.6718  train_acc=0.2725  val_loss=1.6963  val_acc=0.2400
+[2026-06-11 16:17:27] INFO     models.classical.bilstm        | Epoch 10/20 — train_loss=1.6126  train_acc=0.3625  val_loss=1.6446  val_acc=0.3400
+[2026-06-11 16:17:27] INFO     models.classical.bilstm        | Epoch 11/20 — train_loss=1.5297  train_acc=0.3950  val_loss=1.5910  val_acc=0.3400
+[2026-06-11 16:17:27] INFO     models.classical.bilstm        | Epoch 12/20 — train_loss=1.4646  train_acc=0.4675  val_loss=1.5068  val_acc=0.4800
+[2026-06-11 16:17:27] INFO     models.classical.bilstm        | Epoch 13/20 — train_loss=1.3659  train_acc=0.4700  val_loss=1.4696  val_acc=0.4200
+[2026-06-11 16:17:27] INFO     models.classical.bilstm        | Epoch 14/20 — train_loss=1.2779  train_acc=0.5525  val_loss=1.3768  val_acc=0.6200
+[2026-06-11 16:17:27] INFO     models.classical.bilstm        | Epoch 15/20 — train_loss=1.1879  train_acc=0.6200  val_loss=1.2948  val_acc=0.5800
+[2026-06-11 16:17:28] INFO     models.classical.bilstm        | Epoch 16/20 — train_loss=1.0790  train_acc=0.6475  val_loss=1.2592  val_acc=0.6000
+[2026-06-11 16:17:28] INFO     models.classical.bilstm        | Epoch 17/20 — train_loss=0.9469  train_acc=0.6775  val_loss=1.1319  val_acc=0.6200
+[2026-06-11 16:17:28] INFO     models.classical.bilstm        | Epoch 18/20 — train_loss=0.8284  train_acc=0.7050  val_loss=1.0595  val_acc=0.6400
+[2026-06-11 16:17:28] INFO     models.classical.bilstm        | Epoch 19/20 — train_loss=0.7355  train_acc=0.7175  val_loss=0.9919  val_acc=0.6400
+[2026-06-11 16:17:28] INFO     models.classical.bilstm        | Epoch 20/20 — train_loss=0.6697  train_acc=0.7575  val_loss=0.9246  val_acc=0.7400
+[2026-06-11 16:17:28] INFO     models.classical.bilstm        | BiLSTM training finished in 1.61s
+[2026-06-11 16:17:28] INFO     models.classical.base          | Evaluation — Acc=0.6800  P=0.6756  R=0.6800  F1=0.6585
+[2026-06-11 16:17:28] INFO     experiments.runner             |   bilstm: F1=0.6585
+[2026-06-11 16:17:28] INFO     experiments.runner             | 
+Results saved to: results\logs\classical_20260611_161728.json
+[2026-06-11 16:17:28] INFO     run                            | Done.

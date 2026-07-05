@@ -1,0 +1,7 @@
+{
+  "bengali": {
+    "v3": {
+      "error": "'CustomVQCClassifier' object has no attribute 'get_params_count'"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+# =============================================================================
+# Experiment Config: Custom VQC Models
+# =============================================================================
+# Merged on top of default.yaml when running:
+#   python run.py --experiment custom_vqc --exp-config custom_vqc
+
+embeddings:
+  method: "tfidf"
+
+custom_vqc:
+  version: "v1"       # Override with --version v2 or v3
+  n_qubits: 4
+  n_layers: 2
+  entanglement: "linear"
+  data_reuploading: false
+  epochs: 30
+  batch_size: 32
+  learning_rate: 0.01
+
+augmentation:
+  enabled: false
+memory:
+  enabled: false

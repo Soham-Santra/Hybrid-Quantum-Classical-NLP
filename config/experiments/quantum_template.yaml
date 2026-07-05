@@ -1,0 +1,30 @@
+# =============================================================================
+# Experiment Config: Template Quantum Models
+# =============================================================================
+# Merged on top of default.yaml when running:
+#   python run.py --experiment quantum_template --exp-config quantum_template
+
+embeddings:
+  method: "tfidf"
+
+quantum_template:
+  n_qubits: 4
+  n_layers: 2
+  circuit_type: "strongly_entangling"
+  epochs: 30
+  batch_size: 32
+  learning_rate: 0.01
+
+# Disable classical deep models to save time
+classical_models:
+  cnn:
+    enabled: false
+  bilstm:
+    enabled: false
+  transformer:
+    enabled: false
+
+augmentation:
+  enabled: false
+memory:
+  enabled: false

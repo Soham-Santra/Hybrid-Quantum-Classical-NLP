@@ -1,0 +1,131 @@
+# =============================================================================
+# .gitignore — Hybrid Quantum-Classical NLP Framework
+# =============================================================================
+
+# ---------------------------------------------------------------------------
+# Python
+# ---------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+*.egg
+.eggs/
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# ---------------------------------------------------------------------------
+# Jupyter Notebook
+# ---------------------------------------------------------------------------
+.ipynb_checkpoints/
+
+# ---------------------------------------------------------------------------
+# Environment & Secrets
+# ---------------------------------------------------------------------------
+.env
+.env.*
+.env.local
+*.pem
+*.key
+
+# ---------------------------------------------------------------------------
+# HuggingFace & Transformer Cache
+# ---------------------------------------------------------------------------
+.cache/
+*.cache
+huggingface/
+.huggingface/
+
+# ---------------------------------------------------------------------------
+# Model Checkpoints & Trained Weights
+# ---------------------------------------------------------------------------
+results/checkpoints/
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.h5
+
+# ---------------------------------------------------------------------------
+# Pre-trained Embedding Binaries (large, downloadable)
+# ---------------------------------------------------------------------------
+data/raw/*.bin
+data/raw/*.vec
+data/raw/*.gz
+
+# ---------------------------------------------------------------------------
+# Temporary Logs & Outputs
+# ---------------------------------------------------------------------------
+*.tmp
+*.bak
+*.swp
+*.swo
+*~
+
+# ---------------------------------------------------------------------------
+# OS-Specific Files
+# ---------------------------------------------------------------------------
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*.directory
+
+# ---------------------------------------------------------------------------
+# IDE / Editor Files
+# ---------------------------------------------------------------------------
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.project
+.classpath
+.settings/
+
+# ---------------------------------------------------------------------------
+# Google Colab Runtime Files
+# ---------------------------------------------------------------------------
+.config/
+sample_data/
+*.log.gz
+
+# ---------------------------------------------------------------------------
+# Miscellaneous
+# ---------------------------------------------------------------------------
+*.pid
+*.seed
+*.pid.lock
+.mypy_cache/
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+
+# ---------------------------------------------------------------------------
+# NOTE: The following are EXPLICITLY TRACKED (not ignored):
+# ---------------------------------------------------------------------------
+# - data/raw/EmoInHindi/        (academic dataset, not auto-downloadable)
+# - data/raw/emonoba/           (academic dataset, not auto-downloadable)
+# - results/logs/               (experimental results & JSON outputs)
+# - results/figures/            (generated plots)
+# - results/tables/             (result tables)
+# - notebooks/                  (all Jupyter notebooks)
+# - .gitkeep files              (preserve empty directory structure)

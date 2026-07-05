@@ -1,0 +1,10 @@
+[2026-06-11 16:10:28] INFO     root                           | Log file: results/logs\run_20260611_161028.log
+[2026-06-11 16:10:28] INFO     root                           | Random seed set to 42
+[2026-06-11 16:10:28] INFO     run                            | Hybrid Quantum-Classical NLP Framework
+[2026-06-11 16:10:28] INFO     run                            | Project root: D:\Programing Files\JU
+[2026-06-11 16:10:28] INFO     run                            | ======================================================================
+[2026-06-11 16:10:28] INFO     run                            |   EXPERIMENT : classical
+[2026-06-11 16:10:28] INFO     run                            |   LANGUAGES  : ['english']
+[2026-06-11 16:10:28] INFO     run                            |   EMBEDDING  : tfidf
+[2026-06-11 16:10:28] INFO     run                            |   MAX SAMPLES: 200
+[2026-06-11 16:10:28] INFO     run                            | ======================================================================

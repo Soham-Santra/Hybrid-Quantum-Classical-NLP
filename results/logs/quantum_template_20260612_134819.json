@@ -1,0 +1,7 @@
+{
+  "hindi": {
+    "strongly_entangling": {
+      "error": "'QuantumTemplateClassifier' object has no attribute 'get_params_count'"
+    }
+  }
+}

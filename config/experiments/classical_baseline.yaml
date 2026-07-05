@@ -1,0 +1,36 @@
+# =============================================================================
+# Experiment Config: Classical Baselines
+# =============================================================================
+# Merged on top of default.yaml when running:
+#   python run.py --experiment classical --exp-config classical_baseline
+
+embeddings:
+  method: "tfidf"
+
+# Run all classical models
+classical_models:
+  logistic_regression:
+    C: 1.0
+    max_iter: 1000
+  svm:
+    kernel: "linear"
+    C: 1.0
+  cnn:
+    epochs: 20
+    batch_size: 64
+  bilstm:
+    epochs: 20
+    batch_size: 64
+  transformer:
+    epochs: 5
+    batch_size: 16
+
+# Disable quantum and augmentation
+quantum_template:
+  enabled: false
+custom_vqc:
+  enabled: false
+augmentation:
+  enabled: false
+memory:
+  enabled: false

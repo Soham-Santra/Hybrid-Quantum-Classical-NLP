@@ -1,0 +1,97 @@
+[2026-06-12 13:49:19] INFO     root                           | Log file: results/logs\run_20260612_134919.log
+[2026-06-12 13:49:20] INFO     root                           | Random seed set to 42
+[2026-06-12 13:49:20] INFO     run                            | Hybrid Quantum-Classical NLP Framework
+[2026-06-12 13:49:20] INFO     run                            | Project root: D:\Programing Files\JU
+[2026-06-12 13:49:20] INFO     run                            | ======================================================================
+[2026-06-12 13:49:20] INFO     run                            |   EXPERIMENT : custom_vqc
+[2026-06-12 13:49:20] INFO     run                            |   LANGUAGES  : ['bengali']
+[2026-06-12 13:49:20] INFO     run                            |   EMBEDDING  : tfidf
+[2026-06-12 13:49:20] INFO     run                            |   MAX SAMPLES: 10
+[2026-06-12 13:49:20] INFO     run                            | ======================================================================
+[2026-06-12 13:49:20] INFO     run                            |   Version:      v3
+[2026-06-12 13:49:20] INFO     run                            |   Qubits:       4
+[2026-06-12 13:49:20] INFO     run                            |   Layers:       1
+[2026-06-12 13:49:20] INFO     run                            |   Entanglement: linear
+[2026-06-12 13:49:26] INFO     experiments.runner             | 
+============================================================
+[2026-06-12 13:49:26] INFO     experiments.runner             |   Custom VQC Experiment — BENGALI
+[2026-06-12 13:49:26] INFO     experiments.runner             | ============================================================
+[2026-06-12 13:49:26] INFO     data.loader                    | EmoNoBa already cached at: D:\Programing Files\JU\data\raw\emonoba (3 CSVs)
+[2026-06-12 13:49:26] INFO     data.loader                    |   train: 18420 rows, columns=['ID', 'Data', 'Love', 'Joy', 'Surprise', 'Anger', 'Sadness', 'Fear', 'Topic', 'Domain', 'is_admin']
+[2026-06-12 13:49:26] INFO     data.loader                    |   validation: 2047 rows, columns=['ID', 'Data', 'Love', 'Joy', 'Surprise', 'Anger', 'Sadness', 'Fear', 'Topic', 'Domain', 'is_admin']
+[2026-06-12 13:49:26] INFO     data.loader                    |   test: 2272 rows, columns=['ID', 'Data', 'Love', 'Joy', 'Surprise', 'Anger', 'Sadness', 'Fear', 'Topic', 'Domain', 'is_admin']
+[2026-06-12 13:49:26] INFO     data.loader                    | 
+EmotionDataset(name=emonoba, lang=bengali, labels=6)
+  train: 10 samples
+  val: 10 samples
+  test: 10 samples
+[2026-06-12 13:49:26] INFO     data.splitter                  |   train:     10 samples, 4 classes
+[2026-06-12 13:49:26] INFO     data.splitter                  |                          love: 1
+[2026-06-12 13:49:26] INFO     data.splitter                  |                           joy: 3
+[2026-06-12 13:49:26] INFO     data.splitter                  |                         anger: 3
+[2026-06-12 13:49:26] INFO     data.splitter                  |                       sadness: 3
+[2026-06-12 13:49:26] INFO     data.splitter                  |    test:     10 samples, 4 classes
+[2026-06-12 13:49:26] INFO     data.splitter                  |                          love: 2
+[2026-06-12 13:49:26] INFO     data.splitter                  |                           joy: 2
+[2026-06-12 13:49:26] INFO     data.splitter                  |                         anger: 3
+[2026-06-12 13:49:26] INFO     data.splitter                  |                       sadness: 3
+[2026-06-12 13:49:26] INFO     data.splitter                  |     val:     10 samples, 4 classes
+[2026-06-12 13:49:26] INFO     data.splitter                  |                          love: 1
+[2026-06-12 13:49:26] INFO     data.splitter                  |                           joy: 5
+[2026-06-12 13:49:26] INFO     data.splitter                  |                         anger: 1
+[2026-06-12 13:49:26] INFO     data.splitter                  |                       sadness: 3
+[2026-06-12 13:49:26] INFO     preprocessing.pipeline         | Preprocessing dataset 'emonoba' (language=bengali) …
+[2026-06-12 13:49:26] INFO     preprocessing.pipeline         |   train: 10 samples cleaned.
+[2026-06-12 13:49:26] INFO     preprocessing.pipeline         |   val: 10 samples cleaned.
+[2026-06-12 13:49:26] INFO     preprocessing.pipeline         |   test: 10 samples cleaned.
+[2026-06-12 13:49:26] INFO     preprocessing.pipeline         | Preprocessing complete for 'emonoba'.
+[2026-06-12 13:49:26] INFO     embeddings.factory             | Creating embedder — method=tfidf, language=bengali
+[2026-06-12 13:49:26] INFO     embeddings.tfidf               | TfidfEmbedder initialised — max_features=5000, ngram_range=(1, 2), sublinear_tf=True
+[2026-06-12 13:49:26] INFO     embeddings.factory             | Embedding dataset with TF-IDF (fit on train) …
+[2026-06-12 13:49:26] INFO     embeddings.tfidf               | Fit-transforming TF-IDF on 10 documents …
+[2026-06-12 13:49:26] INFO     embeddings.tfidf               | TF-IDF fit_transform complete — vocabulary size: 59, output shape: (10, 59)
+[2026-06-12 13:49:26] INFO     embeddings.factory             |   train embeddings shape: (10, 59)
+[2026-06-12 13:49:26] INFO     embeddings.factory             |   val embeddings shape: (10, 59)
+[2026-06-12 13:49:26] INFO     embeddings.factory             |   test embeddings shape: (10, 59)
+[2026-06-12 13:49:26] INFO     experiments.runner             | 
+--- Training Custom VQC v3 ---
+[2026-06-12 13:49:26] INFO     experiments.runner             |     Qubits: 4, Layers: 1
+[2026-06-12 13:49:26] INFO     models.custom_vqc.feature_compressor | FeatureCompressor: 59 → 4 (activation=tanh)
+[2026-06-12 13:49:26] INFO     models.custom_vqc.custom_vqc_v3 | Created Custom VQC v3 (ring entanglement): 4 qubits, 1 layers
+[2026-06-12 13:49:26] INFO     models.custom_vqc.hybrid_model | CustomVQCModel: input=59, qubits=4, layers=1, classes=6, version=v3
+[2026-06-12 13:49:26] INFO     models.custom_vqc.hybrid_model | CustomVQCClassifier initialised on cpu (qubits=4, layers=1, version=v3)
+[2026-06-12 13:49:26] INFO     models.custom_vqc.hybrid_model | Epoch 1/30 — train_loss=1.8648  train_acc=0.0000  val_loss=1.7357  val_acc=0.0000
+[2026-06-12 13:49:26] INFO     models.custom_vqc.hybrid_model | Epoch 2/30 — train_loss=1.8544  train_acc=0.0000  val_loss=1.7273  val_acc=0.0000
+[2026-06-12 13:49:26] INFO     models.custom_vqc.hybrid_model | Epoch 3/30 — train_loss=1.8435  train_acc=0.0000  val_loss=1.7189  val_acc=0.0000
+[2026-06-12 13:49:26] INFO     models.custom_vqc.hybrid_model | Epoch 4/30 — train_loss=1.8320  train_acc=0.0000  val_loss=1.7106  val_acc=0.0000
+[2026-06-12 13:49:26] INFO     models.custom_vqc.hybrid_model | Epoch 5/30 — train_loss=1.8197  train_acc=0.0000  val_loss=1.7022  val_acc=0.0000
+[2026-06-12 13:49:26] INFO     models.custom_vqc.hybrid_model | Epoch 6/30 — train_loss=1.8064  train_acc=0.0000  val_loss=1.6938  val_acc=0.0000
+[2026-06-12 13:49:26] INFO     models.custom_vqc.hybrid_model | Epoch 7/30 — train_loss=1.7919  train_acc=0.0000  val_loss=1.6852  val_acc=0.0000
+[2026-06-12 13:49:26] INFO     models.custom_vqc.hybrid_model | Epoch 8/30 — train_loss=1.7762  train_acc=0.0000  val_loss=1.6767  val_acc=0.5000
+[2026-06-12 13:49:26] INFO     models.custom_vqc.hybrid_model | Epoch 9/30 — train_loss=1.7592  train_acc=0.1000  val_loss=1.6681  val_acc=0.5000
+[2026-06-12 13:49:26] INFO     models.custom_vqc.hybrid_model | Epoch 10/30 — train_loss=1.7409  train_acc=0.3000  val_loss=1.6594  val_acc=0.5000
+[2026-06-12 13:49:26] INFO     models.custom_vqc.hybrid_model | Epoch 11/30 — train_loss=1.7212  train_acc=0.3000  val_loss=1.6508  val_acc=0.5000
+[2026-06-12 13:49:26] INFO     models.custom_vqc.hybrid_model | Epoch 12/30 — train_loss=1.7003  train_acc=0.3000  val_loss=1.6423  val_acc=0.5000
+[2026-06-12 13:49:26] INFO     models.custom_vqc.hybrid_model | Epoch 13/30 — train_loss=1.6781  train_acc=0.3000  val_loss=1.6338  val_acc=0.5000
+[2026-06-12 13:49:26] INFO     models.custom_vqc.hybrid_model | Epoch 14/30 — train_loss=1.6547  train_acc=0.3000  val_loss=1.6253  val_acc=0.5000
+[2026-06-12 13:49:26] INFO     models.custom_vqc.hybrid_model | Epoch 15/30 — train_loss=1.6302  train_acc=0.3000  val_loss=1.6170  val_acc=0.5000
+[2026-06-12 13:49:26] INFO     models.custom_vqc.hybrid_model | Epoch 16/30 — train_loss=1.6047  train_acc=0.3000  val_loss=1.6088  val_acc=0.5000
+[2026-06-12 13:49:26] INFO     models.custom_vqc.hybrid_model | Epoch 17/30 — train_loss=1.5781  train_acc=0.3000  val_loss=1.6008  val_acc=0.5000
+[2026-06-12 13:49:26] INFO     models.custom_vqc.hybrid_model | Epoch 18/30 — train_loss=1.5507  train_acc=0.4000  val_loss=1.5930  val_acc=0.5000
+[2026-06-12 13:49:26] INFO     models.custom_vqc.hybrid_model | Epoch 19/30 — train_loss=1.5225  train_acc=0.6000  val_loss=1.5855  val_acc=0.5000
+[2026-06-12 13:49:26] INFO     models.custom_vqc.hybrid_model | Epoch 20/30 — train_loss=1.4937  train_acc=0.8000  val_loss=1.5782  val_acc=0.5000
+[2026-06-12 13:49:26] INFO     models.custom_vqc.hybrid_model | Epoch 21/30 — train_loss=1.4644  train_acc=0.8000  val_loss=1.5711  val_acc=0.6000
+[2026-06-12 13:49:26] INFO     models.custom_vqc.hybrid_model | Epoch 22/30 — train_loss=1.4345  train_acc=0.8000  val_loss=1.5642  val_acc=0.6000
+[2026-06-12 13:49:26] INFO     models.custom_vqc.hybrid_model | Epoch 23/30 — train_loss=1.4041  train_acc=0.8000  val_loss=1.5575  val_acc=0.5000
+[2026-06-12 13:49:26] INFO     models.custom_vqc.hybrid_model | Epoch 24/30 — train_loss=1.3732  train_acc=0.9000  val_loss=1.5510  val_acc=0.5000
+[2026-06-12 13:49:26] INFO     models.custom_vqc.hybrid_model | Epoch 25/30 — train_loss=1.3420  train_acc=0.9000  val_loss=1.5447  val_acc=0.5000
+[2026-06-12 13:49:26] INFO     models.custom_vqc.hybrid_model | Epoch 26/30 — train_loss=1.3104  train_acc=0.9000  val_loss=1.5385  val_acc=0.3000
+[2026-06-12 13:49:26] INFO     models.custom_vqc.hybrid_model | Epoch 27/30 — train_loss=1.2787  train_acc=0.9000  val_loss=1.5325  val_acc=0.3000
+[2026-06-12 13:49:26] INFO     models.custom_vqc.hybrid_model | Epoch 28/30 — train_loss=1.2469  train_acc=0.9000  val_loss=1.5267  val_acc=0.3000
+[2026-06-12 13:49:26] INFO     models.custom_vqc.hybrid_model | Epoch 29/30 — train_loss=1.2152  train_acc=0.9000  val_loss=1.5211  val_acc=0.3000
+[2026-06-12 13:49:27] INFO     models.custom_vqc.hybrid_model | Epoch 30/30 — train_loss=1.1837  train_acc=0.9000  val_loss=1.5157  val_acc=0.3000
+[2026-06-12 13:49:27] INFO     models.custom_vqc.hybrid_model | Training completed in 0.66 seconds.
+[2026-06-12 13:49:27] ERROR    experiments.runner             |   v3 failed: 'CustomVQCClassifier' object has no attribute 'get_params_count'
+[2026-06-12 13:49:27] INFO     experiments.runner             | 
+Results saved to: results\logs\custom_vqc_20260612_134927.json
+[2026-06-12 13:49:27] INFO     run                            | Done.

@@ -1,0 +1,126 @@
+[2026-06-12 13:24:07] INFO     root                           | Log file: results/logs\run_20260612_132407.log
+[2026-06-12 13:24:09] INFO     root                           | Random seed set to 42
+[2026-06-12 13:24:09] INFO     run                            | Hybrid Quantum-Classical NLP Framework
+[2026-06-12 13:24:09] INFO     run                            | Project root: D:\Programing Files\JU
+[2026-06-12 13:24:09] INFO     run                            | ======================================================================
+[2026-06-12 13:24:09] INFO     run                            |   EXPERIMENT : classical
+[2026-06-12 13:24:09] INFO     run                            |   LANGUAGES  : ['english']
+[2026-06-12 13:24:09] INFO     run                            |   EMBEDDING  : tfidf
+[2026-06-12 13:24:09] INFO     run                            |   MAX SAMPLES: 100
+[2026-06-12 13:24:09] INFO     run                            | ======================================================================
+[2026-06-12 13:24:17] INFO     experiments.runner             | 
+============================================================
+[2026-06-12 13:24:17] INFO     experiments.runner             |   Classical Experiment — ENGLISH
+[2026-06-12 13:24:17] INFO     experiments.runner             | ============================================================
+[2026-06-12 13:24:17] INFO     data.loader                    | Loading HuggingFace dataset: google-research-datasets/go_emotions (config=simplified)
+[2026-06-12 13:24:17] ERROR    datasets.load                  | `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'google-research-datasets/go_emotions' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+[2026-06-12 13:24:18] INFO     httpx                          | HTTP Request: HEAD https://huggingface.co/datasets/google-research-datasets/go_emotions/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+[2026-06-12 13:24:18] WARNING  huggingface_hub.utils._http    | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[2026-06-12 13:24:18] INFO     httpx                          | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/google-research-datasets/go_emotions/add492243ff905527e67aeb8b80c082af02207c3/README.md "HTTP/1.1 200 OK"
+[2026-06-12 13:24:19] INFO     httpx                          | HTTP Request: HEAD https://huggingface.co/datasets/google-research-datasets/go_emotions/resolve/add492243ff905527e67aeb8b80c082af02207c3/go_emotions.py "HTTP/1.1 404 Not Found"
+[2026-06-12 13:24:20] INFO     httpx                          | HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/google-research-datasets/go_emotions/google-research-datasets/go_emotions.py "HTTP/1.1 404 Not Found"
+[2026-06-12 13:24:20] INFO     httpx                          | HTTP Request: GET https://huggingface.co/api/datasets/google-research-datasets/go_emotions/revision/add492243ff905527e67aeb8b80c082af02207c3 "HTTP/1.1 200 OK"
+[2026-06-12 13:24:20] INFO     httpx                          | HTTP Request: HEAD https://huggingface.co/datasets/google-research-datasets/go_emotions/resolve/add492243ff905527e67aeb8b80c082af02207c3/.huggingface.yaml "HTTP/1.1 404 Not Found"
+[2026-06-12 13:24:21] INFO     httpx                          | HTTP Request: GET https://datasets-server.huggingface.co/info?dataset=google-research-datasets/go_emotions "HTTP/1.1 200 OK"
+[2026-06-12 13:24:22] INFO     httpx                          | HTTP Request: GET https://huggingface.co/api/datasets/google-research-datasets/go_emotions/tree/add492243ff905527e67aeb8b80c082af02207c3/raw?recursive=true&expand=false "HTTP/1.1 200 OK"
+[2026-06-12 13:24:22] INFO     httpx                          | HTTP Request: GET https://huggingface.co/api/datasets/google-research-datasets/go_emotions/tree/add492243ff905527e67aeb8b80c082af02207c3?recursive=false&expand=false "HTTP/1.1 200 OK"
+[2026-06-12 13:24:22] INFO     httpx                          | HTTP Request: HEAD https://huggingface.co/datasets/google-research-datasets/go_emotions/resolve/add492243ff905527e67aeb8b80c082af02207c3/dataset_infos.json "HTTP/1.1 404 Not Found"
+[2026-06-12 13:24:23] INFO     httpx                          | HTTP Request: GET https://huggingface.co/api/datasets/google-research-datasets/go_emotions/tree/add492243ff905527e67aeb8b80c082af02207c3/simplified?recursive=true&expand=false "HTTP/1.1 200 OK"
+[2026-06-12 13:24:23] INFO     data.loader                    |   train: 43410 rows, columns=['text', 'labels', 'id']
+[2026-06-12 13:24:23] INFO     data.loader                    |   validation: 5426 rows, columns=['text', 'labels', 'id']
+[2026-06-12 13:24:23] INFO     data.loader                    |   test: 5427 rows, columns=['text', 'labels', 'id']
+[2026-06-12 13:24:23] WARNING  data.loader                    | Unseen label '0' auto-assigned to 28
+[2026-06-12 13:24:23] INFO     data.loader                    | 
+EmotionDataset(name=go_emotions, lang=english, labels=29)
+  train: 100 samples
+  val: 100 samples
+  test: 100 samples
+[2026-06-12 13:24:23] INFO     data.splitter                  |   train:    100 samples, 1 classes
+[2026-06-12 13:24:23] INFO     data.splitter                  |                           #28: 100
+[2026-06-12 13:24:23] INFO     data.splitter                  |    test:    100 samples, 1 classes
+[2026-06-12 13:24:23] INFO     data.splitter                  |                           #28: 100
+[2026-06-12 13:24:23] INFO     data.splitter                  |     val:    100 samples, 1 classes
+[2026-06-12 13:24:23] INFO     data.splitter                  |                           #28: 100
+[2026-06-12 13:24:23] INFO     preprocessing.pipeline         | Preprocessing dataset 'go_emotions' (language=english) …
+[2026-06-12 13:24:23] INFO     preprocessing.tokenizer        | Downloading NLTK 'punkt_tab' tokenizer data …
+[2026-06-12 13:25:06] INFO     preprocessing.pipeline         |   train: 100 samples cleaned.
+[2026-06-12 13:25:06] INFO     preprocessing.pipeline         |   val: 100 samples cleaned.
+[2026-06-12 13:25:06] INFO     preprocessing.pipeline         |   test: 100 samples cleaned.
+[2026-06-12 13:25:06] INFO     preprocessing.pipeline         | Preprocessing complete for 'go_emotions'.
+[2026-06-12 13:25:06] INFO     embeddings.factory             | Creating embedder — method=tfidf, language=english
+[2026-06-12 13:25:06] INFO     embeddings.tfidf               | TfidfEmbedder initialised — max_features=5000, ngram_range=(1, 2), sublinear_tf=True
+[2026-06-12 13:25:06] INFO     embeddings.factory             | Embedding dataset with TF-IDF (fit on train) …
+[2026-06-12 13:25:06] INFO     embeddings.tfidf               | Fit-transforming TF-IDF on 100 documents …
+[2026-06-12 13:25:06] INFO     embeddings.tfidf               | TF-IDF fit_transform complete — vocabulary size: 1355, output shape: (100, 1355)
+[2026-06-12 13:25:06] INFO     embeddings.factory             |   train embeddings shape: (100, 1355)
+[2026-06-12 13:25:06] INFO     embeddings.factory             |   val embeddings shape: (100, 1355)
+[2026-06-12 13:25:06] INFO     embeddings.factory             |   test embeddings shape: (100, 1355)
+[2026-06-12 13:25:06] INFO     experiments.runner             | 
+--- Training logistic_regression ---
+[2026-06-12 13:25:06] INFO     models.classical.logistic_regression | LogisticRegression initialised (C=1.0000, solver=lbfgs, max_iter=1000)
+[2026-06-12 13:25:06] INFO     models.classical.logistic_regression | Training LogisticRegression on 100 samples (features=1355)
+[2026-06-12 13:25:06] ERROR    experiments.runner             |   logistic_regression failed: This solver needs samples of at least 2 classes in the data, but the data contains only one class: np.int64(28)
+[2026-06-12 13:25:06] INFO     experiments.runner             | 
+--- Training svm ---
+[2026-06-12 13:25:06] INFO     models.classical.svm           | LinearSVC initialised (C=1.0000, max_iter=5000)
+[2026-06-12 13:25:06] INFO     models.classical.svm           | Training LinearSVC on 100 samples (features=1355)
+[2026-06-12 13:25:06] ERROR    experiments.runner             |   svm failed: This solver needs samples of at least 2 classes in the data, but the data contains only one class: np.int64(28)
+[2026-06-12 13:25:06] INFO     experiments.runner             | 
+--- Training cnn ---
+[2026-06-12 13:25:06] INFO     models.classical.cnn           | CNNClassifier initialised (filters=128, kernels=[3, 4, 5], dropout=0.50, epochs=20, bs=64, lr=0.0010)
+[2026-06-12 13:25:06] INFO     models.classical.cnn           | Starting CNN training — 20 epochs, 100 train samples, input_dim=1355
+[2026-06-12 13:25:07] INFO     models.classical.cnn           | Epoch 1/20 — train_loss=3.2635  train_acc=0.0600  val_loss=2.9641  val_acc=1.0000
+[2026-06-12 13:25:07] INFO     models.classical.cnn           | Epoch 2/20 — train_loss=2.9935  train_acc=0.4200  val_loss=2.6228  val_acc=1.0000
+[2026-06-12 13:25:08] INFO     models.classical.cnn           | Epoch 3/20 — train_loss=2.6586  train_acc=0.8900  val_loss=2.2920  val_acc=1.0000
+[2026-06-12 13:25:08] INFO     models.classical.cnn           | Epoch 4/20 — train_loss=2.3867  train_acc=1.0000  val_loss=1.9746  val_acc=1.0000
+[2026-06-12 13:25:09] INFO     models.classical.cnn           | Epoch 5/20 — train_loss=2.0834  train_acc=1.0000  val_loss=1.6747  val_acc=1.0000
+[2026-06-12 13:25:09] INFO     models.classical.cnn           | Epoch 6/20 — train_loss=1.7842  train_acc=1.0000  val_loss=1.3967  val_acc=1.0000
+[2026-06-12 13:25:10] INFO     models.classical.cnn           | Epoch 7/20 — train_loss=1.5506  train_acc=1.0000  val_loss=1.1455  val_acc=1.0000
+[2026-06-12 13:25:10] INFO     models.classical.cnn           | Epoch 8/20 — train_loss=1.3161  train_acc=1.0000  val_loss=0.9248  val_acc=1.0000
+[2026-06-12 13:25:11] INFO     models.classical.cnn           | Epoch 9/20 — train_loss=1.0663  train_acc=1.0000  val_loss=0.7365  val_acc=1.0000
+[2026-06-12 13:25:11] INFO     models.classical.cnn           | Epoch 10/20 — train_loss=0.8833  train_acc=1.0000  val_loss=0.5805  val_acc=1.0000
+[2026-06-12 13:25:12] INFO     models.classical.cnn           | Epoch 11/20 — train_loss=0.7547  train_acc=1.0000  val_loss=0.4544  val_acc=1.0000
+[2026-06-12 13:25:12] INFO     models.classical.cnn           | Epoch 12/20 — train_loss=0.6092  train_acc=1.0000  val_loss=0.3546  val_acc=1.0000
+[2026-06-12 13:25:12] INFO     models.classical.cnn           | Epoch 13/20 — train_loss=0.4627  train_acc=1.0000  val_loss=0.2772  val_acc=1.0000
+[2026-06-12 13:25:13] INFO     models.classical.cnn           | Epoch 14/20 — train_loss=0.3927  train_acc=1.0000  val_loss=0.2179  val_acc=1.0000
+[2026-06-12 13:25:13] INFO     models.classical.cnn           | Epoch 15/20 — train_loss=0.3151  train_acc=1.0000  val_loss=0.1727  val_acc=1.0000
+[2026-06-12 13:25:14] INFO     models.classical.cnn           | Epoch 16/20 — train_loss=0.2426  train_acc=1.0000  val_loss=0.1384  val_acc=1.0000
+[2026-06-12 13:25:14] INFO     models.classical.cnn           | Epoch 17/20 — train_loss=0.2163  train_acc=1.0000  val_loss=0.1124  val_acc=1.0000
+[2026-06-12 13:25:15] INFO     models.classical.cnn           | Epoch 18/20 — train_loss=0.1793  train_acc=1.0000  val_loss=0.0925  val_acc=1.0000
+[2026-06-12 13:25:15] INFO     models.classical.cnn           | Epoch 19/20 — train_loss=0.1440  train_acc=1.0000  val_loss=0.0772  val_acc=1.0000
+[2026-06-12 13:25:15] INFO     models.classical.cnn           | Epoch 20/20 — train_loss=0.1374  train_acc=1.0000  val_loss=0.0653  val_acc=1.0000
+[2026-06-12 13:25:15] INFO     models.classical.cnn           | CNN training finished in 9.26s
+[2026-06-12 13:25:16] INFO     models.classical.base          | Evaluation — Acc=1.0000  P=1.0000  R=1.0000  F1=1.0000
+[2026-06-12 13:25:16] INFO     experiments.runner             |   cnn: F1=1.0000
+[2026-06-12 13:25:16] INFO     experiments.runner             | 
+--- Training bilstm ---
+[2026-06-12 13:25:16] INFO     models.classical.bilstm        | BiLSTMClassifier initialised (hidden=128, layers=2, dropout=0.30, epochs=20, bs=64, lr=0.0010)
+[2026-06-12 13:25:16] INFO     models.classical.bilstm        | Starting BiLSTM training — 20 epochs, 100 train samples, input_dim=1355
+[2026-06-12 13:25:16] INFO     models.classical.bilstm        | Epoch 1/20 — train_loss=3.3091  train_acc=0.3300  val_loss=3.2723  val_acc=1.0000
+[2026-06-12 13:25:16] INFO     models.classical.bilstm        | Epoch 2/20 — train_loss=3.2641  train_acc=1.0000  val_loss=3.2248  val_acc=1.0000
+[2026-06-12 13:25:16] INFO     models.classical.bilstm        | Epoch 3/20 — train_loss=3.2157  train_acc=1.0000  val_loss=3.1709  val_acc=1.0000
+[2026-06-12 13:25:16] INFO     models.classical.bilstm        | Epoch 4/20 — train_loss=3.1584  train_acc=1.0000  val_loss=3.1054  val_acc=1.0000
+[2026-06-12 13:25:16] INFO     models.classical.bilstm        | Epoch 5/20 — train_loss=3.0895  train_acc=1.0000  val_loss=3.0210  val_acc=1.0000
+[2026-06-12 13:25:16] INFO     models.classical.bilstm        | Epoch 6/20 — train_loss=2.9938  train_acc=1.0000  val_loss=2.9075  val_acc=1.0000
+[2026-06-12 13:25:16] INFO     models.classical.bilstm        | Epoch 7/20 — train_loss=2.8628  train_acc=1.0000  val_loss=2.7506  val_acc=1.0000
+[2026-06-12 13:25:16] INFO     models.classical.bilstm        | Epoch 8/20 — train_loss=2.6788  train_acc=1.0000  val_loss=2.5307  val_acc=1.0000
+[2026-06-12 13:25:16] INFO     models.classical.bilstm        | Epoch 9/20 — train_loss=2.4164  train_acc=1.0000  val_loss=2.2244  val_acc=1.0000
+[2026-06-12 13:25:16] INFO     models.classical.bilstm        | Epoch 10/20 — train_loss=2.0499  train_acc=1.0000  val_loss=1.8095  val_acc=1.0000
+[2026-06-12 13:25:16] INFO     models.classical.bilstm        | Epoch 11/20 — train_loss=1.5776  train_acc=1.0000  val_loss=1.2862  val_acc=1.0000
+[2026-06-12 13:25:16] INFO     models.classical.bilstm        | Epoch 12/20 — train_loss=1.0071  train_acc=1.0000  val_loss=0.7299  val_acc=1.0000
+[2026-06-12 13:25:16] INFO     models.classical.bilstm        | Epoch 13/20 — train_loss=0.4929  train_acc=1.0000  val_loss=0.3086  val_acc=1.0000
+[2026-06-12 13:25:16] INFO     models.classical.bilstm        | Epoch 14/20 — train_loss=0.1852  train_acc=1.0000  val_loss=0.1039  val_acc=1.0000
+[2026-06-12 13:25:16] INFO     models.classical.bilstm        | Epoch 15/20 — train_loss=0.0553  train_acc=1.0000  val_loss=0.0326  val_acc=1.0000
+[2026-06-12 13:25:16] INFO     models.classical.bilstm        | Epoch 16/20 — train_loss=0.0149  train_acc=1.0000  val_loss=0.0108  val_acc=1.0000
+[2026-06-12 13:25:16] INFO     models.classical.bilstm        | Epoch 17/20 — train_loss=0.0051  train_acc=1.0000  val_loss=0.0040  val_acc=1.0000
+[2026-06-12 13:25:16] INFO     models.classical.bilstm        | Epoch 18/20 — train_loss=0.0018  train_acc=1.0000  val_loss=0.0017  val_acc=1.0000
+[2026-06-12 13:25:16] INFO     models.classical.bilstm        | Epoch 19/20 — train_loss=0.0008  train_acc=1.0000  val_loss=0.0008  val_acc=1.0000
+[2026-06-12 13:25:16] INFO     models.classical.bilstm        | Epoch 20/20 — train_loss=0.0003  train_acc=1.0000  val_loss=0.0004  val_acc=1.0000
+[2026-06-12 13:25:16] INFO     models.classical.bilstm        | BiLSTM training finished in 0.56s
+[2026-06-12 13:25:16] INFO     models.classical.base          | Evaluation — Acc=1.0000  P=1.0000  R=1.0000  F1=1.0000
+[2026-06-12 13:25:16] INFO     experiments.runner             |   bilstm: F1=1.0000
+[2026-06-12 13:25:16] INFO     experiments.runner             | 
+Results saved to: results\logs\classical_20260612_132516.json
+[2026-06-12 13:25:16] INFO     run                            | Done.

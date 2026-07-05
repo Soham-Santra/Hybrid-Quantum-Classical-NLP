@@ -1,0 +1,113 @@
+[2026-06-12 13:48:35] INFO     root                           | Log file: results/logs\run_20260612_134835.log
+[2026-06-12 13:48:37] INFO     root                           | Random seed set to 42
+[2026-06-12 13:48:37] INFO     run                            | Hybrid Quantum-Classical NLP Framework
+[2026-06-12 13:48:37] INFO     run                            | Project root: D:\Programing Files\JU
+[2026-06-12 13:48:37] INFO     run                            | ======================================================================
+[2026-06-12 13:48:37] INFO     run                            |   EXPERIMENT : quantum_template
+[2026-06-12 13:48:37] INFO     run                            |   LANGUAGES  : ['hindi']
+[2026-06-12 13:48:37] INFO     run                            |   EMBEDDING  : mbert
+[2026-06-12 13:48:37] INFO     run                            |   MAX SAMPLES: 10
+[2026-06-12 13:48:37] INFO     run                            | ======================================================================
+[2026-06-12 13:48:37] INFO     run                            |   Circuit: strongly_entangling
+[2026-06-12 13:48:37] INFO     run                            |   Qubits:  4
+[2026-06-12 13:48:37] INFO     run                            |   Layers:  1
+[2026-06-12 13:48:42] INFO     experiments.runner             | 
+============================================================
+[2026-06-12 13:48:42] INFO     experiments.runner             |   Quantum Template Experiment — HINDI
+[2026-06-12 13:48:42] INFO     experiments.runner             | ============================================================
+[2026-06-12 13:48:42] INFO     data.loader                    | Loading local dataset: D:\Programing Files\JU\data\raw\EmoInHindi\LREC_EmoInHindi.csv
+[2026-06-12 13:48:42] INFO     data.loader                    |   Loaded 44247 rows, columns=['dialogueId', 'utterance_no', 'authorRole', 'utterance', 'emotions', 'emoIntensity']
+[2026-06-12 13:48:42] WARNING  data.splitter                  | First stratified split failed (likely due to sparse classes) — falling back to random split.
+[2026-06-12 13:48:42] WARNING  data.splitter                  | Second stratified split failed (likely due to sparse classes) — falling back to random split.
+[2026-06-12 13:48:42] INFO     data.splitter                  | Split sizes — train: 8, val: 1, test: 1
+[2026-06-12 13:48:42] INFO     data.loader                    | 
+EmotionDataset(name=emo_in_hindi, lang=hindi, labels=17)
+  train: 8 samples
+  val: 1 samples
+  test: 1 samples
+[2026-06-12 13:48:42] INFO     data.splitter                  |   train:      8 samples, 7 classes
+[2026-06-12 13:48:42] INFO     data.splitter                  |                  anticipation: 2
+[2026-06-12 13:48:42] INFO     data.splitter                  |                     confident: 1
+[2026-06-12 13:48:42] INFO     data.splitter                  |                       neutral: 1
+[2026-06-12 13:48:42] INFO     data.splitter                  |                       hopeful: 1
+[2026-06-12 13:48:42] INFO     data.splitter                  |                         anger: 1
+[2026-06-12 13:48:42] INFO     data.splitter                  |                           sad: 1
+[2026-06-12 13:48:42] INFO     data.splitter                  |                       annoyed: 1
+[2026-06-12 13:48:42] INFO     data.splitter                  |     val:      1 samples, 1 classes
+[2026-06-12 13:48:42] INFO     data.splitter                  |                     confident: 1
+[2026-06-12 13:48:42] INFO     data.splitter                  |    test:      1 samples, 1 classes
+[2026-06-12 13:48:42] INFO     data.splitter                  |                           sad: 1
+[2026-06-12 13:48:42] INFO     preprocessing.pipeline         | Preprocessing dataset 'emo_in_hindi' (language=hindi) …
+[2026-06-12 13:48:42] INFO     preprocessing.pipeline         |   train: 8 samples cleaned.
+[2026-06-12 13:48:42] INFO     preprocessing.pipeline         |   val: 1 samples cleaned.
+[2026-06-12 13:48:42] INFO     preprocessing.pipeline         |   test: 1 samples cleaned.
+[2026-06-12 13:48:42] INFO     preprocessing.pipeline         | Preprocessing complete for 'emo_in_hindi'.
+[2026-06-12 13:48:42] INFO     embeddings.factory             | Creating embedder — method=mbert, language=hindi
+[2026-06-12 13:48:42] INFO     embeddings.bert_emb            | TransformerEmbedder created — model=google-bert/bert-base-multilingual-cased, pooling=cls, max_length=128, batch_size=32, device=cpu
+[2026-06-12 13:48:42] INFO     embeddings.factory             | Embedding dataset with transformer …
+[2026-06-12 13:48:42] INFO     embeddings.factory             |   Embedding train split (8 texts) …
+[2026-06-12 13:48:42] INFO     embeddings.bert_emb            | Loading tokenizer and model: google-bert/bert-base-multilingual-cased …
+[2026-06-12 13:48:43] INFO     httpx                          | HTTP Request: HEAD https://huggingface.co/google-bert/bert-base-multilingual-cased/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+[2026-06-12 13:48:43] INFO     httpx                          | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/google-bert/bert-base-multilingual-cased/3f076fdb1ab68d5b2880cb87a0886f315b8146f8/config.json "HTTP/1.1 200 OK"
+[2026-06-12 13:48:43] INFO     httpx                          | HTTP Request: HEAD https://huggingface.co/google-bert/bert-base-multilingual-cased/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+[2026-06-12 13:48:43] WARNING  huggingface_hub.utils._http    | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[2026-06-12 13:48:43] INFO     httpx                          | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/google-bert/bert-base-multilingual-cased/3f076fdb1ab68d5b2880cb87a0886f315b8146f8/tokenizer_config.json "HTTP/1.1 200 OK"
+[2026-06-12 13:48:44] INFO     httpx                          | HTTP Request: GET https://huggingface.co/api/models/google-bert/bert-base-multilingual-cased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+[2026-06-12 13:48:44] INFO     httpx                          | HTTP Request: GET https://huggingface.co/api/models/google-bert/bert-base-multilingual-cased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+[2026-06-12 13:48:44] INFO     httpx                          | HTTP Request: GET https://huggingface.co/api/models/google-bert/bert-base-multilingual-cased "HTTP/1.1 200 OK"
+[2026-06-12 13:48:45] INFO     httpx                          | HTTP Request: HEAD https://huggingface.co/google-bert/bert-base-multilingual-cased/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+[2026-06-12 13:48:45] INFO     httpx                          | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/google-bert/bert-base-multilingual-cased/3f076fdb1ab68d5b2880cb87a0886f315b8146f8/config.json "HTTP/1.1 200 OK"
+[2026-06-12 13:48:45] INFO     embeddings.bert_emb            | Model loaded — hidden_dim=768, device=cpu
+[2026-06-12 13:48:45] INFO     embeddings.bert_emb            | Encoding 8 texts in 1 batches (batch_size=32) …
+[2026-06-12 13:48:45] INFO     embeddings.bert_emb            | Embedding complete — output shape: (8, 768)
+[2026-06-12 13:48:45] INFO     embeddings.factory             |   Embedding val split (1 texts) …
+[2026-06-12 13:48:45] INFO     embeddings.bert_emb            | Encoding 1 texts in 1 batches (batch_size=32) …
+[2026-06-12 13:48:46] INFO     embeddings.bert_emb            | Embedding complete — output shape: (1, 768)
+[2026-06-12 13:48:46] INFO     embeddings.factory             |   Embedding test split (1 texts) …
+[2026-06-12 13:48:46] INFO     embeddings.bert_emb            | Encoding 1 texts in 1 batches (batch_size=32) …
+[2026-06-12 13:48:46] INFO     embeddings.bert_emb            | Embedding complete — output shape: (1, 768)
+[2026-06-12 13:48:46] INFO     embeddings.factory             |   train embeddings shape: (8, 768)
+[2026-06-12 13:48:46] INFO     embeddings.factory             |   val embeddings shape: (1, 768)
+[2026-06-12 13:48:46] INFO     embeddings.factory             |   test embeddings shape: (1, 768)
+[2026-06-12 13:48:46] INFO     experiments.runner             | 
+--- Training Quantum Template: strongly_entangling ---
+[2026-06-12 13:48:46] INFO     experiments.runner             |     Qubits: 4, Layers: 1
+[2026-06-12 13:48:46] INFO     models.quantum_template.feature_compressor | FeatureCompressor: 768 → 4 (activation=tanh)
+[2026-06-12 13:48:46] INFO     models.quantum_template.circuits | Created StronglyEntangling circuit: 4 qubits, 1 layers
+[2026-06-12 13:48:46] INFO     models.quantum_template.hybrid_model | HybridQuantumModel: input=768, qubits=4, layers=1, classes=17, circuit=strongly_entangling
+[2026-06-12 13:48:46] INFO     models.quantum_template.hybrid_model | QuantumTemplateClassifier initialised on cpu (qubits=4, layers=1, circuit=strongly_entangling)
+[2026-06-12 13:48:46] INFO     models.quantum_template.hybrid_model | Epoch 1/30 — train_loss=2.9435  train_acc=0.0000  val_loss=2.6019  val_acc=0.0000
+[2026-06-12 13:48:46] INFO     models.quantum_template.hybrid_model | Epoch 2/30 — train_loss=2.8866  train_acc=0.0000  val_loss=2.5599  val_acc=0.0000
+[2026-06-12 13:48:46] INFO     models.quantum_template.hybrid_model | Epoch 3/30 — train_loss=2.8581  train_acc=0.1250  val_loss=2.5089  val_acc=0.0000
+[2026-06-12 13:48:46] INFO     models.quantum_template.hybrid_model | Epoch 4/30 — train_loss=2.8187  train_acc=0.1250  val_loss=2.4818  val_acc=0.0000
+[2026-06-12 13:48:46] INFO     models.quantum_template.hybrid_model | Epoch 5/30 — train_loss=2.8021  train_acc=0.1250  val_loss=2.4479  val_acc=0.0000
+[2026-06-12 13:48:46] INFO     models.quantum_template.hybrid_model | Epoch 6/30 — train_loss=2.7668  train_acc=0.1250  val_loss=2.4144  val_acc=0.0000
+[2026-06-12 13:48:46] INFO     models.quantum_template.hybrid_model | Epoch 7/30 — train_loss=2.7393  train_acc=0.1250  val_loss=2.3752  val_acc=0.0000
+[2026-06-12 13:48:46] INFO     models.quantum_template.hybrid_model | Epoch 8/30 — train_loss=2.7045  train_acc=0.2500  val_loss=2.3359  val_acc=1.0000
+[2026-06-12 13:48:46] INFO     models.quantum_template.hybrid_model | Epoch 9/30 — train_loss=2.6736  train_acc=0.2500  val_loss=2.3072  val_acc=1.0000
+[2026-06-12 13:48:46] INFO     models.quantum_template.hybrid_model | Epoch 10/30 — train_loss=2.6422  train_acc=0.2500  val_loss=2.2753  val_acc=1.0000
+[2026-06-12 13:48:46] INFO     models.quantum_template.hybrid_model | Epoch 11/30 — train_loss=2.6047  train_acc=0.2500  val_loss=2.2581  val_acc=1.0000
+[2026-06-12 13:48:46] INFO     models.quantum_template.hybrid_model | Epoch 12/30 — train_loss=2.5792  train_acc=0.2500  val_loss=2.2247  val_acc=1.0000
+[2026-06-12 13:48:46] INFO     models.quantum_template.hybrid_model | Epoch 13/30 — train_loss=2.5408  train_acc=0.2500  val_loss=2.1946  val_acc=1.0000
+[2026-06-12 13:48:46] INFO     models.quantum_template.hybrid_model | Epoch 14/30 — train_loss=2.5128  train_acc=0.2500  val_loss=2.1669  val_acc=1.0000
+[2026-06-12 13:48:46] INFO     models.quantum_template.hybrid_model | Epoch 15/30 — train_loss=2.4744  train_acc=0.2500  val_loss=2.1528  val_acc=1.0000
+[2026-06-12 13:48:46] INFO     models.quantum_template.hybrid_model | Epoch 16/30 — train_loss=2.4472  train_acc=0.2500  val_loss=2.1234  val_acc=1.0000
+[2026-06-12 13:48:46] INFO     models.quantum_template.hybrid_model | Epoch 17/30 — train_loss=2.4080  train_acc=0.2500  val_loss=2.1074  val_acc=1.0000
+[2026-06-12 13:48:46] INFO     models.quantum_template.hybrid_model | Epoch 18/30 — train_loss=2.3782  train_acc=0.2500  val_loss=2.1050  val_acc=1.0000
+[2026-06-12 13:48:46] INFO     models.quantum_template.hybrid_model | Epoch 19/30 — train_loss=2.3399  train_acc=0.2500  val_loss=2.0956  val_acc=1.0000
+[2026-06-12 13:48:46] INFO     models.quantum_template.hybrid_model | Epoch 20/30 — train_loss=2.3113  train_acc=0.2500  val_loss=2.0442  val_acc=1.0000
+[2026-06-12 13:48:46] INFO     models.quantum_template.hybrid_model | Epoch 21/30 — train_loss=2.2730  train_acc=0.2500  val_loss=2.0278  val_acc=1.0000
+[2026-06-12 13:48:46] INFO     models.quantum_template.hybrid_model | Epoch 22/30 — train_loss=2.2429  train_acc=0.3750  val_loss=2.0195  val_acc=1.0000
+[2026-06-12 13:48:46] INFO     models.quantum_template.hybrid_model | Epoch 23/30 — train_loss=2.2086  train_acc=0.5000  val_loss=1.9930  val_acc=1.0000
+[2026-06-12 13:48:46] INFO     models.quantum_template.hybrid_model | Epoch 24/30 — train_loss=2.1773  train_acc=0.5000  val_loss=1.9862  val_acc=1.0000
+[2026-06-12 13:48:46] INFO     models.quantum_template.hybrid_model | Epoch 25/30 — train_loss=2.1456  train_acc=0.5000  val_loss=1.9876  val_acc=1.0000
+[2026-06-12 13:48:46] INFO     models.quantum_template.hybrid_model | Epoch 26/30 — train_loss=2.1135  train_acc=0.5000  val_loss=1.9768  val_acc=1.0000
+[2026-06-12 13:48:46] INFO     models.quantum_template.hybrid_model | Epoch 27/30 — train_loss=2.0847  train_acc=0.5000  val_loss=1.9839  val_acc=0.0000
+[2026-06-12 13:48:46] INFO     models.quantum_template.hybrid_model | Epoch 28/30 — train_loss=2.0519  train_acc=0.5000  val_loss=1.9787  val_acc=0.0000
+[2026-06-12 13:48:46] INFO     models.quantum_template.hybrid_model | Epoch 29/30 — train_loss=2.0248  train_acc=0.5000  val_loss=1.9803  val_acc=0.0000
+[2026-06-12 13:48:46] INFO     models.quantum_template.hybrid_model | Epoch 30/30 — train_loss=1.9956  train_acc=0.5000  val_loss=2.0040  val_acc=0.0000
+[2026-06-12 13:48:46] INFO     models.quantum_template.hybrid_model | Training completed in 0.68 seconds.
+[2026-06-12 13:48:46] INFO     experiments.runner             |   strongly_entangling: F1=0.0000
+[2026-06-12 13:48:46] INFO     experiments.runner             | 
+Results saved to: results\logs\quantum_template_20260612_134846.json
+[2026-06-12 13:48:46] INFO     run                            | Done.

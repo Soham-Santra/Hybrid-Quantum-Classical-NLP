@@ -1,0 +1,39 @@
+# =============================================================================
+# Experiment Config: Low-Resource Learning
+# =============================================================================
+# Merged on top of default.yaml when running:
+#   python run.py --experiment low_resource --exp-config low_resource
+
+embeddings:
+  method: "tfidf"
+
+low_resource:
+  enabled: true
+  fractions: [1.0, 0.5, 0.25, 0.1, 0.05]
+  stratified: true
+
+# Use smaller model configs for faster iteration
+quantum_template:
+  n_qubits: 4
+  n_layers: 2
+  epochs: 20
+  batch_size: 32
+
+custom_vqc:
+  n_qubits: 4
+  n_layers: 2
+  epochs: 20
+  batch_size: 32
+
+classical_models:
+  cnn:
+    epochs: 15
+  bilstm:
+    epochs: 15
+  transformer:
+    epochs: 3
+
+augmentation:
+  enabled: false
+memory:
+  enabled: false

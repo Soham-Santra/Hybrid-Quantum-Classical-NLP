@@ -1,0 +1,16 @@
+{
+  "english": {
+    "logistic_regression": {
+      "error": "LogisticRegression.__init__() got an unexpected keyword argument 'multi_class'"
+    },
+    "svm": {
+      "error": "This solver needs samples of at least 2 classes in the data, but the data contains only one class: np.int64(28)"
+    },
+    "cnn": {
+      "error": "CNNClassifier.__init__() takes from 3 to 4 positional arguments but 5 were given"
+    },
+    "bilstm": {
+      "error": "BiLSTMClassifier.__init__() takes from 3 to 4 positional arguments but 5 were given"
+    }
+  }
+}

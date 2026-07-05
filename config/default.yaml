@@ -1,0 +1,366 @@
+# =============================================================================
+# Hybrid Quantum-Classical NLP Framework — Default Configuration
+# =============================================================================
+# This file controls all aspects of the framework. Override individual settings
+# by passing CLI arguments or by creating experiment-specific YAML files in
+# config/experiments/ that will be merged on top of this default.
+
+# ---------------------------------------------------------------------------
+# General
+# ---------------------------------------------------------------------------
+project_name: "Hybrid Quantum-Classical NLP for Emotion Detection"
+seed: 42
+device: "cpu"  # "cpu" or "cuda"
+output_dir: "results"
+log_level: "INFO"  # DEBUG, INFO, WARNING, ERROR
+
+# ---------------------------------------------------------------------------
+# Datasets
+# ---------------------------------------------------------------------------
+datasets:
+  english:
+    - name: "go_emotions"
+      source: "huggingface"
+      hf_id: "google-research-datasets/go_emotions"
+      hf_config: "simplified"
+      text_column: "text"
+      label_column: "labels"
+      multilabel: true
+    - name: "emotion"
+      source: "huggingface"
+      hf_id: "dair-ai/emotion"
+      hf_config: null
+      text_column: "text"
+      label_column: "label"
+      multilabel: false
+
+  hindi:
+    - name: "emo_in_hindi"
+      source: "local"
+      path: "data/raw/EmoInHindi/LREC_EmoInHindi.csv"
+      text_column: "utterance"
+      label_column: "emotions"
+      multilabel: true
+    - name: "go_emotions_hindi"
+      source: "huggingface"
+      hf_id: "utkarsharora100/google_go_emotions_hindi_translated"
+      hf_config: null
+      text_column: "text"
+      label_column: "label"
+      multilabel: false
+
+  bengali:
+    - name: "emonoba"
+      source: "github"
+      github_url: "https://github.com/KhondokerIslam/EmoNoBa"
+      path: "data/raw/emonoba"
+      text_column: "Data"
+      multilabel: true
+      binary_label_columns: ["Love", "Joy", "Surprise", "Anger", "Sadness", "Fear"]
+    - name: "bengali_emotion"
+      source: "local"
+      path: "data/raw/bengali_emotion.csv"
+      text_column: "text"
+      label_column: "label"
+      multilabel: false
+
+# Active dataset per language (index into the list above)
+# Primary: GoEmotions (English), EmoInHindi (Hindi), EmoNoBa (Bengali)
+active_dataset:
+  english: 0    # GoEmotions (28 labels → mapped to unified 6)
+  hindi: 0      # EmoInHindi (17 labels)
+  bengali: 0    # EmoNoBa (6 labels, matches unified exactly)
+
+
+# ---------------------------------------------------------------------------
+# Preprocessing
+# ---------------------------------------------------------------------------
+preprocessing:
+  # Text cleaning
+  remove_urls: true
+  remove_html: true
+  remove_special_chars: false
+  remove_emojis: false
+  lowercase: true  # Only for English; Hindi/Bengali skip this
+
+  # Unicode normalization
+  unicode_form: "NFC"  # NFC, NFKC, NFD, NFKD
+
+  # Tokenization
+  tokenizer:
+    english: "nltk"       # "nltk", "whitespace", "transformer"
+    hindi: "whitespace"   # "indic_nlp", "whitespace", "transformer"
+    bengali: "whitespace" # "indic_nlp", "whitespace", "transformer"
+
+  # Label normalization
+  label_mode: "per_dataset"  # "per_dataset" or "unified"
+  unified_labels:
+    - "joy"
+    - "sadness"
+    - "anger"
+    - "fear"
+    - "surprise"
+    - "love"
+
+  # Train/val/test split ratios (only if dataset doesn't have predefined splits)
+  split_ratios:
+    train: 0.8
+    val: 0.1
+    test: 0.1
+
+  max_sequence_length: 128
+  min_word_count: 2
+
+# ---------------------------------------------------------------------------
+# Embeddings
+# ---------------------------------------------------------------------------
+embeddings:
+  method: "tfidf"  # "tfidf", "fasttext", "word2vec", "bert", "mbert", "indicbert"
+
+  tfidf:
+    max_features: 5000
+    ngram_range: [1, 2]
+    sublinear_tf: true
+
+  fasttext:
+    pretrained: true
+    embedding_dim: 300
+    # Pre-trained model paths (download separately)
+    model_paths:
+      english: "data/raw/cc.en.300.bin"
+      hindi: "data/raw/cc.hi.300.bin"
+      bengali: "data/raw/cc.bn.300.bin"
+
+  word2vec:
+    pretrained: false
+    embedding_dim: 300
+    window: 5
+    min_count: 2
+    epochs: 10
+
+  bert:
+    model_name: "google-bert/bert-base-uncased"
+    pooling: "cls"  # "cls" or "mean"
+    max_length: 128
+    batch_size: 32
+
+  mbert:
+    model_name: "google-bert/bert-base-multilingual-cased"
+    pooling: "cls"
+    max_length: 128
+    batch_size: 32
+
+  indicbert:
+    model_name: "ai4bharat/IndicBERTv2-MLM-only"
+    pooling: "cls"
+    max_length: 128
+    batch_size: 32
+
+# ---------------------------------------------------------------------------
+# Classical Models
+# ---------------------------------------------------------------------------
+classical_models:
+  logistic_regression:
+    C: 1.0
+    max_iter: 1000
+    solver: "lbfgs"
+    multi_class: "multinomial"
+
+  svm:
+    kernel: "linear"  # "linear", "rbf"
+    C: 1.0
+    max_iter: 5000
+
+  cnn:
+    num_filters: 128
+    kernel_sizes: [3, 4, 5]
+    dropout: 0.5
+    embedding_dim: 300
+    epochs: 20
+    batch_size: 64
+    learning_rate: 0.001
+
+  bilstm:
+    hidden_dim: 128
+    num_layers: 2
+    dropout: 0.3
+    bidirectional: true
+    embedding_dim: 300
+    epochs: 20
+    batch_size: 64
+    learning_rate: 0.001
+
+  transformer:
+    model_name: "google-bert/bert-base-uncased"  # Changed per language
+    freeze_base: false
+    epochs: 5
+    batch_size: 16
+    learning_rate: 2.0e-5
+    warmup_steps: 100
+
+# ---------------------------------------------------------------------------
+# Quantum Models — Template VQC
+# ---------------------------------------------------------------------------
+quantum_template:
+  n_qubits: 4           # 4, 6, or 8
+  n_layers: 2           # Circuit depth
+  circuit_type: "strongly_entangling"  # "strongly_entangling", "basic_entangler", "efficient_su2"
+  backend: "default.qubit"
+  diff_method: "backprop"
+
+  # Feature compression
+  compressor:
+    type: "linear"       # "linear" or "pca"
+    activation: "tanh"   # Scale to [-pi, pi]
+
+  # Training
+  epochs: 30
+  batch_size: 32
+  learning_rate: 0.01
+  optimizer: "adam"
+
+  # Post-quantum classifier
+  classifier:
+    hidden_dims: []      # Empty = direct linear; e.g., [16] = one hidden layer
+    dropout: 0.1
+
+# ---------------------------------------------------------------------------
+# Quantum Models — Custom VQC
+# ---------------------------------------------------------------------------
+custom_vqc:
+  version: "v1"          # "v1", "v2", "v3"
+  n_qubits: 4            # 4, 6, or 8
+  n_layers: 2            # Number of variational layers
+  backend: "default.qubit"
+  diff_method: "backprop"
+
+  # Data encoding
+  encoding_gate: "RY"    # Gate used for angle encoding
+
+  # Variational layer
+  rotation_gates: ["RX", "RY", "RZ"]  # Per-qubit rotations
+
+  # Entanglement
+  entanglement: "linear"  # "linear" or "ring"
+
+  # Data re-uploading (v2)
+  data_reuploading: false  # true for v2
+
+  # Feature compression
+  compressor:
+    type: "linear"
+    activation: "tanh"
+
+  # Training
+  epochs: 30
+  batch_size: 32
+  learning_rate: 0.01
+  optimizer: "adam"
+
+  # Post-quantum classifier
+  classifier:
+    hidden_dims: []
+    dropout: 0.1
+
+# ---------------------------------------------------------------------------
+# Experiments
+# ---------------------------------------------------------------------------
+experiments:
+  # Which experiments to run
+  enabled:
+    - "classical_vs_quantum"       # Exp 1
+    - "qubit_comparison"           # Exp 2
+    - "embedding_comparison"       # Exp 3
+    - "depth_comparison"           # Exp 4
+    - "entanglement_comparison"    # Exp 5
+    - "reuploading_comparison"     # Exp 6
+
+  # Qubit counts to compare (Exp 2)
+  qubit_counts: [4, 6, 8]
+
+  # Embeddings to compare (Exp 3)
+  embedding_methods: ["tfidf", "fasttext", "word2vec", "bert", "mbert", "indicbert"]
+
+  # Ansatz depths to compare (Exp 4)
+  ansatz_depths: [1, 2, 3, 4, 6]
+
+  # Languages to run experiments on
+  languages: ["english", "hindi", "bengali"]
+
+# ---------------------------------------------------------------------------
+# Low-Resource Learning
+# ---------------------------------------------------------------------------
+low_resource:
+  enabled: true
+  fractions: [1.0, 0.5, 0.25, 0.1, 0.05]
+  stratified: true  # Maintain label distribution
+
+# ---------------------------------------------------------------------------
+# Data Augmentation
+# ---------------------------------------------------------------------------
+augmentation:
+  enabled: false
+  methods:
+    back_translation:
+      enabled: true
+      # Translation model pairs (source→pivot→source)
+      pivot_language: "en"
+      model_prefix: "Helsinki-NLP/opus-mt"
+      num_augmented: 2  # Number of augmented samples per original
+
+    synonym_replacement:
+      enabled: true
+      num_replacements: 2  # Words to replace per sentence
+      num_augmented: 2
+
+    contextual:
+      enabled: true
+      model_name: "google-bert/bert-base-multilingual-cased"
+      mask_ratio: 0.15
+      num_augmented: 2
+
+  # Apply augmentation only to these fractions
+  target_fractions: [0.05, 0.1, 0.25]
+
+# ---------------------------------------------------------------------------
+# Memory-Based Learning
+# ---------------------------------------------------------------------------
+memory:
+  enabled: false
+  bank_size: 1000         # Max stored representations
+  k_neighbors: 5          # Number of nearest neighbors
+  similarity: "cosine"    # "cosine" or "euclidean"
+  combination: "weighted_average"  # How to combine model + memory predictions
+  memory_weight: 0.3      # Weight for memory predictions
+
+# ---------------------------------------------------------------------------
+# Evaluation
+# ---------------------------------------------------------------------------
+evaluation:
+  metrics: ["accuracy", "precision", "recall", "f1"]
+  average: "weighted"  # "micro", "macro", "weighted"
+
+  statistical_tests:
+    enabled: true
+    alpha: 0.05
+    tests: ["paired_t", "mcnemar", "wilcoxon"]
+
+# ---------------------------------------------------------------------------
+# Visualization
+# ---------------------------------------------------------------------------
+visualization:
+  style: "seaborn-v0_8-darkgrid"
+  figure_format: "png"  # "png", "pdf", "svg"
+  dpi: 300
+  figsize: [10, 6]
+  color_palette: "Set2"
+  save_dir: "results/figures"
+
+# ---------------------------------------------------------------------------
+# Logging & Reproducibility
+# ---------------------------------------------------------------------------
+logging:
+  save_checkpoints: true
+  checkpoint_dir: "results/checkpoints"
+  log_dir: "results/logs"
+  tensorboard: false
